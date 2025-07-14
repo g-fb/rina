@@ -12,6 +12,8 @@ import com.georgefb.hana
 Item {
     id: root
 
+    signal fileSelected(fileUrl: url)
+
     FoldersModel {
         id: foldersModel
 
@@ -51,6 +53,9 @@ Item {
 
                 text: fileName
                 width: ListView.view.width
+                onClicked: {
+                    Q_EMIT: root.fileSelected(fileUrl)
+                }
             }
 
             SplitView.fillHeight: true

@@ -6,6 +6,8 @@ import QtWebChannel
 WebEngineView {
     id: root
 
+    property url fileUrl
+
     url: "qrc:/qt/qml/com/georgefb/hana/webview/index.html"
 
     profile.offTheRecord: false

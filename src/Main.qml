@@ -25,9 +25,15 @@ ApplicationWindow {
             Sidebar {
                 SplitView.fillHeight: true
                 SplitView.preferredWidth: appWindow.width * 0.25
+
+                onFileSelected: function(fileUrl) {
+                    webView.fileUrl = fileUrl
+                }
             }
 
             WebView {
+                id: webView
+
                 SplitView.fillHeight: true
                 SplitView.fillWidth: appWindow.width * 0.75
             }
