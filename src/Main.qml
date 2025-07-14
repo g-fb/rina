@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
+import org.kde.config as KConfig
+
 import com.georgefb.hana.sidebar
 import com.georgefb.hana.webview
 
@@ -14,6 +16,10 @@ ApplicationWindow {
     visible: true
 
     title: qsTr("Hana")
+
+    KConfig.WindowStateSaver {
+        configGroupName: "MainWindow"
+    }
 
     Page {
         anchors.fill: parent
