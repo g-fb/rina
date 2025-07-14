@@ -1,5 +1,6 @@
 import QtCore
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Dialogs
 
 import org.kde.kirigami as Kirigami
@@ -8,6 +9,24 @@ import com.georgefb.hana
 
 Item {
     id: root
+
+    FoldersModel {
+        id: foldersModel
+
+        dataFolder: GeneralSettings.dataFolder
+    }
+
+    ListView {
+        anchors.fill: parent
+        model: foldersModel
+        delegate: ItemDelegate {
+            required property url folderUrl
+            required property string folderName
+
+            text: folderName
+            width: ListView.view.width
+        }
+    }
 
     Kirigami.PlaceholderMessage {
         anchors.fill: parent
