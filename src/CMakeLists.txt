@@ -12,6 +12,20 @@ qt_add_qml_module(apphana
         Main.qml
 )
 
+# generate settings class
+kconfig_target_kcfg_file(apphana
+    FILE generalsettings.kcfg
+    CLASS_NAME GeneralSettings
+
+    MUTATORS
+    SINGLETON
+    GENERATE_MOC
+    DEFAULT_VALUE_GETTERS
+    GENERATE_PROPERTIES
+    PARENT_IN_CONSTRUCTOR
+    QML_REGISTRATION
+)
+
 add_subdirectory(Sidebar)
 add_subdirectory(WebView)
 
