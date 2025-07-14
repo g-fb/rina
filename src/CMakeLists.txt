@@ -13,6 +13,7 @@ qt_add_qml_module(apphana
 )
 
 add_subdirectory(Sidebar)
+add_subdirectory(WebView)
 
 target_link_libraries(apphana
     PRIVATE
@@ -34,6 +35,7 @@ target_link_libraries(apphana
 
         # link qml modules
         sidebarplugin
+        webviewplugin
 )
 
 install(TARGETS apphana ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

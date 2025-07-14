@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 
 import com.georgefb.hana.sidebar
+import com.georgefb.hana.webview
 
 ApplicationWindow {
     id: appWindow
@@ -24,6 +25,13 @@ ApplicationWindow {
             Sidebar {
                 SplitView.fillHeight: true
                 SplitView.preferredWidth: appWindow.width * 0.25
+            }
+
+            WebView {
+                url: "https://georgefb.com"
+
+                SplitView.fillHeight: true
+                SplitView.fillWidth: appWindow.width * 0.75
             }
         }
     }
