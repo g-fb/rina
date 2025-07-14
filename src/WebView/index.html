@@ -18,10 +18,20 @@
         var backend
         new QWebChannel(qt.webChannelTransport, function(channel) {
             backend = channel.objects.htmlBridge
+
             const quill = new Quill('#editor', {
-              theme: 'snow'
+                theme: 'snow'
             })
+
             backend.editorInitialized = true
+
+            quill.on('text-change', (delta, oldDelta, source) => {
+                backend.save(JSON.stringify(quill.getContents()))
+            })
+
+            backend.editorContentChanged.connect(function() {
+                quill.setContents(JSON.parse(backend.editorContent), 'silent')
+            });
         })
 
     </script>

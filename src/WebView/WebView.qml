@@ -3,6 +3,8 @@ import QtQuick.Controls
 import QtWebEngine
 import QtWebChannel
 
+import com.georgefb.hana
+
 WebEngineView {
     id: root
 
@@ -28,11 +30,18 @@ WebEngineView {
     QtObject {
         id: htmlBridge
 
+        property url fileUrl: root.fileUrl
+        property string editorContent
         property bool editorInitialized: false
 
-        onEditorInitializedChanged: {
-            console.log("ready")
+        function save(content: string) {
+            Bridge.saveContentToFile(fileUrl, content)
         }
+
+        onFileUrlChanged: {
+            editorContent = Bridge.getFileContent(fileUrl)
+        }
+
         WebChannel.id: "htmlBridge"
     }
 }
