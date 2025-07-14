@@ -6,6 +6,10 @@ FoldersModel::FoldersModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     connect(this, &FoldersModel::dataFolderChanged, this, [this] () {
+        beginResetModel();
+        m_data.clear();
+        endResetModel();
+
         QDirIterator it(dataFolder().toLocalFile(), QDir::Dirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
         while (it.hasNext()) {
             QFileInfo fi = it.nextFileInfo();
