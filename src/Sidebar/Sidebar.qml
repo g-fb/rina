@@ -36,6 +36,7 @@ Item {
                 required property string folderName
 
                 text: folderName
+                font.pointSize: 14
                 width: ListView.view.width
                 onClicked: {
                     filesModel.parentFolder = folderUrl
@@ -60,6 +61,7 @@ Item {
                 required property string fileName
 
                 text: fileName
+                font.pointSize: 12
                 width: ListView.view.width
                 onClicked: {
                     Q_EMIT: root.fileSelected(fileUrl)
