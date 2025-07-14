@@ -4,8 +4,9 @@ qt_add_executable(apphana
     main.cpp
 )
 
+qt_policy(SET QTP0001 NEW)
 qt_add_qml_module(apphana
-    URI hana
+    URI com.georgefb.hana
     VERSION 1.0
     QML_FILES
         Main.qml
@@ -13,12 +14,19 @@ qt_add_qml_module(apphana
 
 target_link_libraries(apphana
     PRIVATE
+        Qt6::Core
+        Qt6::Qml
         Qt6::Quick
+        Qt6::QuickControls2
+
+        KF6::ColorScheme
+        KF6::ConfigCore
+        KF6::ConfigGui
+        KF6::I18n
+        KF6::IconThemes
+        KF6::KIOWidgets
+        KF6::Kirigami
+        KF6::Crash
 )
 
-include(GNUInstallDirs)
-install(TARGETS apphana
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+install(TARGETS apphana ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
