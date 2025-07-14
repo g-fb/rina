@@ -6,5 +6,6 @@
   <kcfgfile name="hana/hana.conf" />
   <group name="General">
       <entry name="DataFolder" type="String"></entry>
+      <entry name="ZoomFactor" type="Double"></entry>
   </group>
 </kcfg>

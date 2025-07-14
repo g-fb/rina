@@ -15,10 +15,26 @@ Page {
 
     header: ToolBar {
         RowLayout {
+            anchors.fill: parent
             Kirigami.SearchField {
                 onAccepted: {
                     webView.findText(text)
                 }
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+            ToolButton {
+                icon.name: "zoom-out"
+                onClicked: webView.zoomFactor -= 0.10
+            }
+            ToolButton {
+                text: webView.zoomFactor.toFixed(2)
+                onClicked: webView.zoomFactor = 1
+            }
+            ToolButton {
+                icon.name: "zoom-in"
+                onClicked: webView.zoomFactor += 0.10
             }
         }
     }
@@ -32,10 +48,16 @@ Page {
         profile.offTheRecord: false
         profile.storageName: "com.georgefb.hana"
 
+        zoomFactor:GeneralSettings.zoomFactor
         webChannel: mainWebChannel
 
         onNewWindowRequested: function(request) {
             Qt.openUrlExternally(request.requestedUrl)
+        }
+
+        onZoomFactorChanged: {
+            GeneralSettings.zoomFactor = zoomFactor
+            GeneralSettings.save()
         }
 
         WebChannel {
