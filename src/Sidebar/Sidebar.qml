@@ -29,7 +29,14 @@ Item {
         anchors.fill: parent
 
         ListView {
+            property int margin: 10
+
             model: foldersModel
+            currentIndex: 0
+            leftMargin: margin
+            topMargin: margin
+            rightMargin: margin
+            bottomMargin: margin
             delegate: ItemDelegate {
                 required property int index
                 required property url folderUrl
@@ -37,8 +44,10 @@ Item {
 
                 text: folderName
                 font.pointSize: 14
-                width: ListView.view.width
+                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+                highlighted: ListView.view.currentIndex === index
                 onClicked: {
+                    ListView.view.currentIndex = index
                     filesModel.parentFolder = folderUrl
                 }
 
@@ -54,7 +63,14 @@ Item {
         }
 
         ListView {
+            property int margin: 10
+
             model: filesModel
+            currentIndex: 0
+            leftMargin: margin
+            topMargin: margin
+            rightMargin: margin
+            bottomMargin: margin
             delegate: ItemDelegate {
                 required property int index
                 required property url fileUrl
@@ -62,8 +78,10 @@ Item {
 
                 text: fileName
                 font.pointSize: 12
-                width: ListView.view.width
+                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
+                highlighted: ListView.view.currentIndex === index
                 onClicked: {
+                    ListView.view.currentIndex = index
                     Q_EMIT: root.fileSelected(fileUrl)
                 }
 
