@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 
+import com.georgefb.hana.sidebar
+
 ApplicationWindow {
     id: appWindow
 
@@ -18,6 +20,11 @@ ApplicationWindow {
         SplitView {
             orientation: Qt.Horizontal
             anchors.fill: parent
+
+            Sidebar {
+                SplitView.fillHeight: true
+                SplitView.preferredWidth: appWindow.width * 0.25
+            }
         }
     }
 }

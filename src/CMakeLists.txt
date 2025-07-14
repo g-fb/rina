@@ -12,6 +12,8 @@ qt_add_qml_module(apphana
         Main.qml
 )
 
+add_subdirectory(Sidebar)
+
 target_link_libraries(apphana
     PRIVATE
         Qt6::Core
@@ -27,6 +29,9 @@ target_link_libraries(apphana
         KF6::KIOWidgets
         KF6::Kirigami
         KF6::Crash
+
+        # link qml modules
+        sidebarplugin
 )
 
 install(TARGETS apphana ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
