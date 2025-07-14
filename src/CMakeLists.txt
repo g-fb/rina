@@ -10,6 +10,7 @@ qt_add_qml_module(apphana
     VERSION 1.0
     QML_FILES
         Main.qml
+    SOURCES bridge.h bridge.cpp
 )
 
 # generate settings class
