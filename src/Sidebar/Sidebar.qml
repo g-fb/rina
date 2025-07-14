@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtCore
 import QtQuick
 import QtQuick.Controls
@@ -16,15 +18,43 @@ Item {
         dataFolder: GeneralSettings.dataFolder
     }
 
-    ListView {
-        anchors.fill: parent
-        model: foldersModel
-        delegate: ItemDelegate {
-            required property url folderUrl
-            required property string folderName
+    FilesModel {
+        id: filesModel
+    }
 
-            text: folderName
-            width: ListView.view.width
+    SplitView {
+        orientation: Qt.Horizontal
+        anchors.fill: parent
+
+        ListView {
+            model: foldersModel
+            delegate: ItemDelegate {
+                required property url folderUrl
+                required property string folderName
+
+                text: folderName
+                width: ListView.view.width
+                onClicked: {
+                    filesModel.parentFolder = folderUrl
+                }
+            }
+
+            SplitView.fillHeight: true
+            SplitView.preferredWidth: root.width * 0.5
+        }
+
+        ListView {
+            model: filesModel
+            delegate: ItemDelegate {
+                required property url fileUrl
+                required property string fileName
+
+                text: fileName
+                width: ListView.view.width
+            }
+
+            SplitView.fillHeight: true
+            SplitView.preferredWidth: root.width * 0.5
         }
     }
 
