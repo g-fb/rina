@@ -7,4 +7,5 @@ qt_add_qml_module(sidebar
     QML_FILES
         Sidebar.qml
     SOURCES foldersmodel.h foldersmodel.cpp
+    SOURCES filesmodel.h filesmodel.cpp
 )
