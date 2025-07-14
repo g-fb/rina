@@ -34,6 +34,12 @@ set_package_properties(Qt6Quick PROPERTIES TYPE REQUIRED)
 find_package(Qt6QuickControls2 ${QT_MIN_VERSION})
 set_package_properties(Qt6QuickControls2 PROPERTIES TYPE REQUIRED)
 
+find_package(Qt6WebEngineCore)
+set_package_properties(Qt6WebEngineCore PROPERTIES TYPE REQUIRED)
+
+find_package(Qt6WebEngineQuick)
+set_package_properties(Qt6WebEngineQuick PROPERTIES TYPE REQUIRED)
+
 # -------------------------------
 #
 # -- KF6 dependencies

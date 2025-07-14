@@ -20,6 +20,8 @@ target_link_libraries(apphana
         Qt6::Qml
         Qt6::Quick
         Qt6::QuickControls2
+        Qt6::WebEngineCore
+        Qt6::WebEngineQuick
 
         KF6::ColorScheme
         KF6::ConfigCore
