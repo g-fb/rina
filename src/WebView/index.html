@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>This is a title</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="editor"></div>
+
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script>
+
+        var backend
+        new QWebChannel(qt.webChannelTransport, function(channel) {
+            backend = channel.objects.htmlBridge
+            const quill = new Quill('#editor', {
+              theme: 'snow'
+            })
+            backend.editorInitialized = true
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -28,8 +28,6 @@ ApplicationWindow {
             }
 
             WebView {
-                url: "https://georgefb.com"
-
                 SplitView.fillHeight: true
                 SplitView.fillWidth: appWindow.width * 0.75
             }

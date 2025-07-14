@@ -6,4 +6,6 @@ qt_add_qml_module(webview
     IMPORT_PATH ${CMAKE_BINARY_DIR}
     QML_FILES
         WebView.qml
+    RESOURCES
+        index.html
 )
