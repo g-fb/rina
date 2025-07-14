@@ -23,7 +23,7 @@
                 theme: 'snow'
             })
 
-            backend.editorInitialized = true
+            backend.isEditorInitialized = true
 
             quill.on('text-change', (delta, oldDelta, source) => {
                 backend.save(JSON.stringify(quill.getContents()))

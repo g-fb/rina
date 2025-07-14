@@ -32,16 +32,33 @@ WebEngineView {
 
         property url fileUrl: root.fileUrl
         property string editorContent
-        property bool editorInitialized: false
+        property bool isEditorInitialized: false
 
         function save(content: string) {
             Bridge.saveContentToFile(fileUrl, content)
         }
 
         onFileUrlChanged: {
-            editorContent = Bridge.getFileContent(fileUrl)
+            if (isEditorInitialized) {
+                editorContent = Bridge.getFileContent(fileUrl)
+            } else {
+                editorInitTimer.start()
+            }
         }
 
         WebChannel.id: "htmlBridge"
+    }
+
+    Timer {
+        id: editorInitTimer
+
+        running: false
+        repeat: true
+        interval: 50
+
+        onTriggered: {
+            editorInitTimer.stop()
+            htmlBridge.editorContent = Bridge.getFileContent(htmlBridge.fileUrl)
+        }
     }
 }

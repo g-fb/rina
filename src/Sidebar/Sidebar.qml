@@ -31,6 +31,7 @@ Item {
         ListView {
             model: foldersModel
             delegate: ItemDelegate {
+                required property int index
                 required property url folderUrl
                 required property string folderName
 
@@ -38,6 +39,12 @@ Item {
                 width: ListView.view.width
                 onClicked: {
                     filesModel.parentFolder = folderUrl
+                }
+
+                Component.onCompleted: {
+                    if (index === 0) {
+                        filesModel.parentFolder = folderUrl
+                    }
                 }
             }
 
@@ -48,6 +55,7 @@ Item {
         ListView {
             model: filesModel
             delegate: ItemDelegate {
+                required property int index
                 required property url fileUrl
                 required property string fileName
 
@@ -55,6 +63,12 @@ Item {
                 width: ListView.view.width
                 onClicked: {
                     Q_EMIT: root.fileSelected(fileUrl)
+                }
+
+                Component.onCompleted: {
+                    if (index === 0) {
+                        Q_EMIT: root.fileSelected(fileUrl)
+                    }
                 }
             }
 
