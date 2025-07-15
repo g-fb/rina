@@ -29,12 +29,10 @@ ApplicationWindow {
             anchors.fill: parent
 
             Sidebar {
+                id: sidebar
+
                 SplitView.fillHeight: true
                 SplitView.preferredWidth: appWindow.width * 0.25
-
-                onFileSelected: function(fileUrl) {
-                    webView.fileUrl = fileUrl
-                }
             }
 
             WebView {
@@ -42,6 +40,13 @@ ApplicationWindow {
 
                 SplitView.fillHeight: true
                 SplitView.fillWidth: appWindow.width * 0.75
+
+                Connections {
+                    target: sidebar
+                    function onFileSelected(fileUrl) {
+                        webView.fileUrl = fileUrl
+                    }
+                }
             }
         }
     }
