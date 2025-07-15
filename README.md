@@ -5,7 +5,7 @@ WebEngine.
 
 #### Donate: [GitHub Sponsors](https://github.com/sponsors/g-fb) | [Liberapay](https://liberapay.com/gfb/) | [PayPal](https://paypal.me/georgefloreabanus)
 
-[![screenshot](data/images/rina-thumb.webp)](data/images/rina.webp)
+[![screenshot](data/images/rina-thumb.webp)](data/images/rina.png)
 
 # Dependencies
 
