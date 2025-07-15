@@ -14,8 +14,8 @@ Dependencies will be printed by `cmake` when building.
 # Build
 
 ```bash
-git clone https://github.com/g-fb/mangareader
-cd manga-reader
+git clone https://github.com/g-fb/rina
+cd rina
 cmake -B build -G Ninja
 cmake --build build
 ```
