@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 
 cmake_policy(SET CMP0048 NEW)
-project(hana VERSION 0.1 LANGUAGES CXX)
+project(rina VERSION 0.1 LANGUAGES CXX)
 
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src)
 set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY} CACHE PATH "Extra QML import paths to make Qt Creator happy")
@@ -88,8 +88,8 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 
 include(ECMSetupVersion)
 ecm_setup_version(${PROJECT_VERSION}
-    VARIABLE_PREFIX HANA
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/hana-version.h"
+    VARIABLE_PREFIX RINA
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/rina-version.h"
 )
 
 ki18n_install(po)

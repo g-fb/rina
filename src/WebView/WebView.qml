@@ -6,7 +6,7 @@ import QtWebChannel
 
 import org.kde.kirigami as Kirigami
 
-import com.georgefb.hana
+import com.georgefb.rina
 
 Page {
     id: root
@@ -42,11 +42,11 @@ Page {
     WebEngineView {
         id: webView
 
-        url: "qrc:/qt/qml/com/georgefb/hana/webview/index.html"
+        url: "qrc:/qt/qml/com/georgefb/rina/webview/index.html"
         anchors.fill: parent
 
         profile.offTheRecord: false
-        profile.storageName: "com.georgefb.hana"
+        profile.storageName: "com.georgefb.rina"
 
         zoomFactor:GeneralSettings.zoomFactor
         webChannel: mainWebChannel

@@ -3,8 +3,8 @@ import QtQuick.Controls
 
 import org.kde.config as KConfig
 
-import com.georgefb.hana.sidebar
-import com.georgefb.hana.webview
+import com.georgefb.rina.sidebar
+import com.georgefb.rina.webview
 
 ApplicationWindow {
     id: appWindow
@@ -15,7 +15,7 @@ ApplicationWindow {
     minimumHeight: 300
     visible: true
 
-    title: qsTr("Hana")
+    title: qsTr("Rina")
 
     KConfig.WindowStateSaver {
         configGroupName: "MainWindow"

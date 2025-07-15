@@ -1,12 +1,12 @@
 qt_standard_project_setup(REQUIRES 6.8)
 
-qt_add_executable(apphana
+qt_add_executable(apprina
     main.cpp
 )
 
 qt_policy(SET QTP0001 NEW)
-qt_add_qml_module(apphana
-    URI com.georgefb.hana
+qt_add_qml_module(apprina
+    URI com.georgefb.rina
     VERSION 1.0
     QML_FILES
         Main.qml
@@ -14,7 +14,7 @@ qt_add_qml_module(apphana
 )
 
 # generate settings class
-kconfig_target_kcfg_file(apphana
+kconfig_target_kcfg_file(apprina
     FILE generalsettings.kcfg
     CLASS_NAME GeneralSettings
 
@@ -30,7 +30,7 @@ kconfig_target_kcfg_file(apphana
 add_subdirectory(Sidebar)
 add_subdirectory(WebView)
 
-target_link_libraries(apphana
+target_link_libraries(apprina
     PRIVATE
         Qt6::Core
         Qt6::Qml
@@ -53,4 +53,4 @@ target_link_libraries(apphana
         webviewplugin
 )
 
-install(TARGETS apphana ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS apprina ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

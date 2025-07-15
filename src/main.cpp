@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
                      &app, []() { QCoreApplication::exit(-1); },
     Qt::QueuedConnection);
-    engine.loadFromModule("com.georgefb.hana", "Main");
+    engine.loadFromModule("com.georgefb.rina", "Main");
 
     return app.exec();
 }

@@ -7,7 +7,7 @@ import QtQuick.Dialogs
 
 import org.kde.kirigami as Kirigami
 
-import com.georgefb.hana
+import com.georgefb.rina
 
 Item {
     id: root
