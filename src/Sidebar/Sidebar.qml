@@ -27,6 +27,7 @@ Item {
     SplitView {
         orientation: Qt.Horizontal
         anchors.fill: parent
+        visible: GeneralSettings.dataFolder
 
         ListView {
             property int margin: 10
