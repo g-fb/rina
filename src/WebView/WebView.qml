@@ -80,27 +80,19 @@ Page {
             onFileUrlChanged: {
                 if (isEditorInitialized) {
                     editorContent = Bridge.getFileContent(fileUrl)
-                } else {
-                    editorInitTimer.start()
+                }
+            }
+
+            onIsEditorInitializedChanged: {
+                // on startup, the editor is not initialized fast enough
+                // to load the content in the onFileUrlChanged signal handler
+                // so we load the content when the initialization is complete
+                if (isEditorInitialized && fileUrl !== "") {
+                    editorContent = Bridge.getFileContent(fileUrl)
                 }
             }
 
             WebChannel.id: "htmlBridge"
-        }
-
-        Timer {
-            id: editorInitTimer
-
-            running: false
-            repeat: true
-            interval: 50
-
-            onTriggered: {
-                if (htmlBridge.isEditorInitialized) {
-                    editorInitTimer.stop()
-                    htmlBridge.editorContent = Bridge.getFileContent(htmlBridge.fileUrl)
-                }
-            }
         }
     }
 }
