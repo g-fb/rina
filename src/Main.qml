@@ -9,7 +9,7 @@ import com.georgefb.rina.webview
 ApplicationWindow {
     id: appWindow
 
-    width: 800
+    width: 1000
     height: 600
     minimumWidth: 400
     minimumHeight: 300
