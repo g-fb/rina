@@ -33,6 +33,7 @@ ApplicationWindow {
 
                 SplitView.fillHeight: true
                 SplitView.preferredWidth: appWindow.width * 0.25
+                SplitView.minimumWidth: 300
             }
 
             WebView {
