@@ -14,8 +14,12 @@ public:
     explicit Bridge(QObject *parent = nullptr);
 
 public Q_SLOTS:
-    QString getFileContent(const QUrl &fileurl);
-    void saveContentToFile(const QUrl &fileurl, const QString &content);
+    QString getFileContent(const QUrl &fileUrl);
+    void saveContentToFile(const QUrl &fileUrl, const QString &content);
+    bool folderExists(const QUrl &url);
+    bool createFolder(const QUrl &url);
+    bool fileExists(const QUrl &fileUrl);
+    bool createFile(const QUrl &fileUrl);
 
 private:
     Q_DISABLE_COPY_MOVE(Bridge)
