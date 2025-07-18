@@ -11,8 +11,8 @@ ApplicationWindow {
 
     width: 1000
     height: 600
-    minimumWidth: 400
-    minimumHeight: 300
+    minimumWidth: 850
+    minimumHeight: 500
     visible: true
 
     title: qsTr("Rina")
