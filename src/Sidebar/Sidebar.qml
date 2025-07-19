@@ -41,15 +41,7 @@ Item {
             topMargin: margin
             rightMargin: margin
             bottomMargin: margin
-            delegate: ItemDelegate {
-                required property int index
-                required property url folderUrl
-                required property string folderName
-
-                text: folderName
-                font.pointSize: 14
-                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                highlighted: ListView.view.currentIndex === index
+            delegate: FolderDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
                     filesModel.parentFolder = folderUrl
@@ -86,15 +78,7 @@ Item {
             topMargin: margin
             rightMargin: margin
             bottomMargin: margin
-            delegate: ItemDelegate {
-                required property int index
-                required property url fileUrl
-                required property string fileName
-
-                text: fileName
-                font.pointSize: 12
-                width: ListView.view.width - ListView.view.leftMargin - ListView.view.rightMargin
-                highlighted: ListView.view.currentIndex === index
+            delegate: FileDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
                     Q_EMIT: root.fileSelected(fileUrl)
@@ -112,8 +96,9 @@ Item {
                     text: "Add file"
                     width: parent.width
                     onClicked: {
+                        const folderDelegate = foldersView.itemAtIndex(foldersView.currentIndex) as FolderDelegate
                         const object = {
-                            parentUrl: foldersView.itemAtIndex(foldersView.currentIndex).folderUrl
+                            parentUrl: folderDelegate.folderUrl
                         }
 
                         const dialog = createFileComponent.createObject(Overlay.overlay, object) as Dialog
