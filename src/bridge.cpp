@@ -3,6 +3,8 @@
 #include <QFile>
 #include <QDir>
 
+using namespace Qt::StringLiterals;
+
 Bridge::Bridge(QObject *parent)
     : QObject{parent}
 {
@@ -18,8 +20,12 @@ QString Bridge::getFileContent(const QUrl &fileUrl)
     }
 
     QTextStream in(&file);
+    auto content = in.readAll();
+    if (content.isEmpty()) {
+        return u"{}"_s;
+    }
 
-    return in.readAll();
+    return content;
 }
 
 void Bridge::saveContentToFile(const QUrl &fileUrl, const QString &content)
