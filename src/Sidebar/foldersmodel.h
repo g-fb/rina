@@ -2,6 +2,7 @@
 #define FOLDERSMODEL_H
 
 #include <QAbstractListModel>
+#include <QFileSystemWatcher>
 #include <QUrl>
 #include <QtQmlIntegration/qqmlintegration.h>
 
@@ -38,8 +39,10 @@ Q_SIGNALS:
     void countChanged();
 
 private:
+    void getItems();
     QList<Folder> m_data;
     QUrl m_dataFolder;
+    std::unique_ptr<QFileSystemWatcher> m_fileSystemWatcher;
 };
 
 #endif // FOLDERSMODEL_H

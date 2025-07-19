@@ -4,23 +4,14 @@
 
 FilesModel::FilesModel(QObject *parent)
     : QAbstractListModel(parent)
+    , m_fileSystemWatcher{std::make_unique<QFileSystemWatcher>()}
 {
+    connect(m_fileSystemWatcher.get(), &QFileSystemWatcher::directoryChanged, this, [this](const QString &path) {
+        Q_UNUSED(path)
+        getItems();
+    });
     connect(this, &FilesModel::parentFolderChanged, this, [this] () {
-        beginResetModel();
-        m_data.clear();
-        endResetModel();
-
-        QDirIterator it(parentFolder().toLocalFile(), QDir::Files | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
-        while (it.hasNext()) {
-            QFileInfo fi = it.nextFileInfo();
-            File f;
-            f.url = QUrl::fromUserInput(fi.absoluteFilePath());
-            f.name = fi.fileName();
-
-            beginInsertRows({}, rowCount(), rowCount());
-            m_data.append(f);
-            endInsertRows();
-        }
+        getItems();
     });
 }
 
@@ -65,6 +56,25 @@ QHash<int, QByteArray> FilesModel::roleNames() const
     return roles;
 }
 
+void FilesModel::getItems()
+{
+    beginResetModel();
+    m_data.clear();
+    endResetModel();
+
+    QDirIterator it(parentFolder().toLocalFile(), QDir::Files | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
+    while (it.hasNext()) {
+        QFileInfo fi = it.nextFileInfo();
+        File f;
+        f.url = QUrl::fromUserInput(fi.absoluteFilePath());
+        f.name = fi.fileName();
+
+        beginInsertRows({}, rowCount(), rowCount());
+        m_data.append(f);
+        endInsertRows();
+    }
+}
+
 QUrl FilesModel::parentFolder() const
 {
     return m_parentFolder;
@@ -76,7 +86,11 @@ void FilesModel::setParentFolder(const QUrl &url)
         return;
     }
 
+    if (!m_parentFolder.toLocalFile().isEmpty()) {
+        m_fileSystemWatcher->removePath(m_parentFolder.toLocalFile());
+    }
     m_parentFolder = url;
+    m_fileSystemWatcher->addPath(url.toLocalFile());
     Q_EMIT parentFolderChanged();
 }
 
