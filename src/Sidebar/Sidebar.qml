@@ -37,10 +37,6 @@ Item {
 
             model: foldersModel
             currentIndex: 0
-            leftMargin: margin
-            topMargin: margin
-            rightMargin: margin
-            bottomMargin: margin
             delegate: FolderDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
@@ -53,7 +49,7 @@ Item {
                     }
                 }
             }
-            footer: ToolBar {
+            header: ToolBar {
                 width: parent.width
                 ToolButton {
                     text: "Add folder"
@@ -74,10 +70,6 @@ Item {
 
             model: filesModel
             currentIndex: 0
-            leftMargin: margin
-            topMargin: margin
-            rightMargin: margin
-            bottomMargin: margin
             delegate: FileDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
@@ -90,7 +82,7 @@ Item {
                     }
                 }
             }
-            footer: ToolBar {
+            header: ToolBar {
                 width: parent.width
                 ToolButton {
                     text: "Add file"
