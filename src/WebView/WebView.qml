@@ -14,6 +14,8 @@ Page {
     property url fileUrl
 
     header: ToolBar {
+        enabled: root.fileUrl.toString() !== ""
+
         RowLayout {
             anchors.fill: parent
             Kirigami.SearchField {
@@ -44,6 +46,7 @@ Page {
 
         url: "qrc:/qt/qml/com/georgefb/rina/webview/index.html"
         anchors.fill: parent
+        visible: root.fileUrl.toString() !== ""
 
         profile.offTheRecord: false
         profile.storageName: "com.georgefb.rina"
