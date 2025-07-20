@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2025 George Florea Bănuș <georgefb899@gmail.com>
+# SPDX-License-Identifier: CC0-1.0
+
+[Desktop Entry]
+Name=Rina
+GenericName=Notes app
+Exec=rina
+Icon=rina
+Type=Application
+Categories=Qt;KDE;Utility
+Terminal=false
+X-DBUS-ServiceName=com.georgefb.rina
