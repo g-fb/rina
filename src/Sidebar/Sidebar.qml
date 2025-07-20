@@ -82,6 +82,13 @@ Item {
                     }
                 }
             }
+            onCountChanged: {
+                if (count > 0) {
+                    return
+                }
+                Q_EMIT: root.fileSelected("")
+            }
+
             header: ToolBar {
                 width: parent.width
                 ToolButton {
