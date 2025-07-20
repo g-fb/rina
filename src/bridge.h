@@ -20,6 +20,8 @@ public Q_SLOTS:
     bool createFolder(const QUrl &url);
     bool fileExists(const QUrl &fileUrl);
     bool createFile(const QUrl &fileUrl);
+    void highlightInFileManager(const QUrl &fileUrl);
+    void moveToTrash(const QUrl &fileUrl);
 
 private:
     Q_DISABLE_COPY_MOVE(Bridge)

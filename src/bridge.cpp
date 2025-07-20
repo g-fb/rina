@@ -3,6 +3,9 @@
 #include <QFile>
 #include <QDir>
 
+#include <KIO/DeleteOrTrashJob>
+#include <KIO/OpenFileManagerWindowJob>
+
 using namespace Qt::StringLiterals;
 
 Bridge::Bridge(QObject *parent)
@@ -69,4 +72,18 @@ bool Bridge::createFile(const QUrl &fileUrl)
         return file.open(QFile::WriteOnly);
     }
     return false;
+}
+
+void Bridge::highlightInFileManager(const QUrl &fileUrl)
+{
+    KIO::highlightInFileManager({fileUrl});
+}
+
+void Bridge::moveToTrash(const QUrl &fileUrl)
+{
+    auto *job = new KIO::DeleteOrTrashJob({fileUrl},
+                                          KIO::AskUserActionInterface::Trash,
+                                          KIO::AskUserActionInterface::DefaultConfirmation,
+                                          this);
+    job->start();
 }
