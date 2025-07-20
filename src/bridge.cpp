@@ -16,10 +16,14 @@ Bridge::Bridge(QObject *parent)
 
 QString Bridge::getFileContent(const QUrl &fileUrl)
 {
+    if (!fileUrl.isValid() || fileUrl.isEmpty() || !fileUrl.isLocalFile()) {
+        return u"{}"_s;
+    }
+
     QFile file(fileUrl.toLocalFile());
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Cannot open file:" << file.errorString();
-        return {};
+        return u"{}"_s;
     }
 
     QTextStream in(&file);
