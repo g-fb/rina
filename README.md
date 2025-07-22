@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: None
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Rina
 
 A simple note app using the QuillJS rich text editor inside a Qt (QML)

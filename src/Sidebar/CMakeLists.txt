@@ -1,3 +1,8 @@
+#
+# SPDX-FileCopyrightText: 2025 George Florea Bănuș <georgefb899@gmail.com>
+#
+# SPDX-License-Identifier: BSD-2-Clause
+#
 
 qt_add_library(sidebar STATIC)
 qt_add_qml_module(sidebar

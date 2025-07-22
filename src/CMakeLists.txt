@@ -1,3 +1,9 @@
+#
+# SPDX-FileCopyrightText: 2025 George Florea Bănuș <georgefb899@gmail.com>
+#
+# SPDX-License-Identifier: BSD-2-Clause
+#
+
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(apprina

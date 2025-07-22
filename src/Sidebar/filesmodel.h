@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 George Florea Bănuș <georgefb899@gmail.com>
+ *
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+
 #ifndef FILESMODEL_H
 #define FILESMODEL_H
 
