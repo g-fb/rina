@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: None
+# SPDX-License-Identifier: CC0-1.0
+app-id: com.georgefb.rina
+runtime: org.kde.Platform
+runtime-version: 6.9
+sdk: org.kde.Sdk
+base: io.qt.qtwebengine.BaseApp
+base-version: 6.9
+command: apprina
+# rename-icon: rina
+# copy-icon: true
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --filesystem=host:ro
+  - --filesystem=home
+  - --talk-name=org.freedesktop.FileManager1
+modules:
+  - name: rina
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: dir
+        path: .
