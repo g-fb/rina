@@ -13,4 +13,10 @@ qt_add_qml_module(webview
         WebView.qml
     RESOURCES
         index.html
+        assets/atom-one-dark.min.css
+        assets/katex.min.css
+        assets/quill.snow.css
+        assets/highlight.min.js
+        assets/katex.min.js
+        assets/quill.js
 )
