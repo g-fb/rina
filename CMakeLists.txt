@@ -13,7 +13,7 @@ set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src)
 set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY} CACHE PATH "Extra QML import paths to make Qt Creator happy")
 
 set(QT_MIN_VERSION 6.9.0)
-set(KF6_MIN_VERSION 6.15.0)
+set(KF6_MIN_VERSION 6.13.0)
 
 include(FeatureSummary)
 
