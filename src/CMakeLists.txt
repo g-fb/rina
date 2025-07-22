@@ -6,12 +6,12 @@
 
 qt_standard_project_setup(REQUIRES 6.8)
 
-qt_add_executable(apprina
+qt_add_executable(rina
     main.cpp
 )
 
 qt_policy(SET QTP0001 NEW)
-qt_add_qml_module(apprina
+qt_add_qml_module(rina
     URI com.georgefb.rina
     VERSION 1.0
     QML_FILES
@@ -20,7 +20,7 @@ qt_add_qml_module(apprina
 )
 
 # generate settings class
-kconfig_target_kcfg_file(apprina
+kconfig_target_kcfg_file(rina
     FILE generalsettings.kcfg
     CLASS_NAME GeneralSettings
 
@@ -36,7 +36,7 @@ kconfig_target_kcfg_file(apprina
 add_subdirectory(Sidebar)
 add_subdirectory(WebView)
 
-target_link_libraries(apprina
+target_link_libraries(rina
     PRIVATE
         Qt6::Core
         Qt6::Qml
@@ -59,4 +59,4 @@ target_link_libraries(apprina
         webviewplugin
 )
 
-install(TARGETS apprina ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS rina ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
