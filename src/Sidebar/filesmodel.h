@@ -41,14 +41,20 @@ public:
     QUrl parentFolder() const;
     void setParentFolder(const QUrl &url);
 
+    Q_PROPERTY(uint lastFileIndex READ lastFileIndex WRITE setLastFileIndex NOTIFY lastFileIndexChanged FINAL)
+    uint lastFileIndex() const;
+    void setLastFileIndex(uint newLastFileIndex);
+
 Q_SIGNALS:
     void countChanged();
+    void lastFileIndexChanged();
 
 private:
     void getItems();
     QList<File> m_data;
     QUrl m_parentFolder;
     std::unique_ptr<QFileSystemWatcher> m_fileSystemWatcher;
+    uint m_lastFileIndex{0};
 };
 
 #endif // FILESMODEL_H

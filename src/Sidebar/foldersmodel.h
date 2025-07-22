@@ -41,14 +41,20 @@ public:
     QUrl dataFolder() const;
     void setDataFolder(const QUrl &url);
 
+    Q_PROPERTY(uint lastFolderIndex READ lastFolderIndex WRITE setLastFolderIndex NOTIFY lastFolderIndexChanged FINAL)
+    uint lastFolderIndex() const;
+    void setLastFolderIndex(uint newLastFolderIndex);
+
 Q_SIGNALS:
     void countChanged();
+    void lastFolderIndexChanged();
 
 private:
     void getItems();
     QList<Folder> m_data;
     QUrl m_dataFolder;
     std::unique_ptr<QFileSystemWatcher> m_fileSystemWatcher;
+    uint m_lastFolderIndex{0};
 };
 
 #endif // FOLDERSMODEL_H

@@ -8,6 +8,8 @@
 
 #include <QDirIterator>
 
+#include "sidebarsettings.h"
+
 FoldersModel::FoldersModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_fileSystemWatcher{std::make_unique<QFileSystemWatcher>()}
@@ -69,15 +71,21 @@ void FoldersModel::getItems()
     endResetModel();
 
     QDirIterator it(dataFolder().toLocalFile(), QDir::Dirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
+    uint i{0};
     while (it.hasNext()) {
         QFileInfo fi = it.nextFileInfo();
         Folder f;
         f.url = QUrl::fromUserInput(fi.absoluteFilePath());
         f.name = fi.fileName();
 
+        if (SidebarSettings::lastFolder() == f.url) {
+            setLastFolderIndex(i);
+        }
+
         beginInsertRows({}, rowCount(), rowCount());
         m_data.append(f);
         endInsertRows();
+        i++;
     }
 }
 
@@ -98,6 +106,21 @@ void FoldersModel::setDataFolder(const QUrl &url)
     m_dataFolder = url;
     m_fileSystemWatcher->addPath(url.toLocalFile());
     Q_EMIT dataFolderChanged();
+}
+
+uint FoldersModel::lastFolderIndex() const
+{
+    return m_lastFolderIndex;
+}
+
+void FoldersModel::setLastFolderIndex(uint newLastFolderIndex)
+{
+    if (m_lastFolderIndex == newLastFolderIndex) {
+        return;
+    }
+
+    m_lastFolderIndex = newLastFolderIndex;
+    Q_EMIT lastFolderIndexChanged();
 }
 
 #include "moc_foldersmodel.cpp"

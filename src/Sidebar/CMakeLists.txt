@@ -16,3 +16,23 @@ qt_add_qml_module(sidebar
     SOURCES foldersmodel.h foldersmodel.cpp
     SOURCES filesmodel.h filesmodel.cpp
 )
+
+# generate settings class
+kconfig_target_kcfg_file(sidebar
+    FILE sidebarsettings.kcfg
+    CLASS_NAME SidebarSettings
+
+    MUTATORS
+    SINGLETON
+    GENERATE_MOC
+    DEFAULT_VALUE_GETTERS
+    GENERATE_PROPERTIES
+    PARENT_IN_CONSTRUCTOR
+    QML_REGISTRATION
+)
+
+target_link_libraries(sidebar
+    PRIVATE
+        KF6::ConfigCore
+        KF6::ConfigGui
+)

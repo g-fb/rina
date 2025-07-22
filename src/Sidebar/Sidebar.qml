@@ -29,6 +29,8 @@ Item {
 
     FilesModel {
         id: filesModel
+
+        parentFolder: SidebarSettings.lastFolder
     }
 
     SplitView {
@@ -42,19 +44,17 @@ Item {
             property int margin: 10
 
             model: foldersModel
-            currentIndex: 0
+            currentIndex: foldersModel.lastFolderIndex
             delegate: FolderDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
                     filesModel.parentFolder = folderUrl
-                }
-
-                Component.onCompleted: {
-                    if (index === 0) {
-                        filesModel.parentFolder = folderUrl
-                    }
+                    filesView.currentIndex = 0
+                    SidebarSettings.lastFolder = folderUrl
+                    SidebarSettings.save()
                 }
             }
+
             header: ToolBar {
                 width: parent.width
                 ToolButton {
@@ -72,18 +72,22 @@ Item {
         }
 
         ListView {
+            id: filesView
+
             property int margin: 10
 
             model: filesModel
-            currentIndex: 0
+            currentIndex: filesModel.lastFileIndex
             delegate: FileDelegate {
                 onClicked: {
                     ListView.view.currentIndex = index
                     Q_EMIT: root.fileSelected(fileUrl)
+                    SidebarSettings.lastFile = fileUrl
+                    SidebarSettings.save()
                 }
 
                 Component.onCompleted: {
-                    if (index === 0) {
+                    if (index === ListView.view.currentIndex) {
                         Q_EMIT: root.fileSelected(fileUrl)
                     }
                 }
