@@ -7,8 +7,8 @@
 
 <component type="desktop-application">
     <name>Rina</name>
-    <id>org.kde.rina</id>
-    <launchable type="desktop-id">org.kde.rina.desktop</launchable>
+    <id>com.georgefb.rina</id>
+    <launchable type="desktop-id">com.georgefb.rina.desktop</launchable>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
     <url type="bugtracker">https://github.com/g-fb/rina/issues</url>
