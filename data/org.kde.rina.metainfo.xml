@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ SPDX-FileCopyrightText: 2025 George Florea Bănuș <georgefb899@gmail.com>
+
+ SPDX-License-Identifier: CC0-1.0
+-->
+
+<component type="desktop-application">
+    <name>Rina</name>
+    <id>org.kde.rina</id>
+    <launchable type="desktop-id">org.kde.rina.desktop</launchable>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+    <url type="bugtracker">https://github.com/g-fb/rina/issues</url>
+    <url type="donation">https://github.com/sponsors/g-fb</url>
+    <url type="vcs-browser">https://github.com/g-fb/rina</url>
+    <summary>Notes manager with a rich text editor</summary>
+    <developer_name>George Florea Bănuș</developer_name>
+    <description>
+        <p>App to manage notes in a rich text editor.</p>
+    </description>
+    <releases>
+        <release version="0.1.0" date="2099-01-01"></release>
+    </releases>
+    <screenshots>
+        <screenshot type="default">
+        </screenshot>
+        <screenshot>
+        </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.0"/>
+</component>
