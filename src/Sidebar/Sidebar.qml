@@ -49,7 +49,6 @@ Item {
                 onClicked: {
                     ListView.view.currentIndex = index
                     filesModel.parentFolder = folderUrl
-                    filesView.currentIndex = 0
                     SidebarSettings.lastFolder = folderUrl
                     SidebarSettings.save()
                 }
@@ -92,11 +91,17 @@ Item {
                     }
                 }
             }
-            onCountChanged: {
-                if (count > 0) {
-                    return
+            Connections {
+                target: filesModel
+                function onParentFolderChanged() {
+                    filesView.currentIndex = 0
                 }
-                Q_EMIT: root.fileSelected("")
+            }
+
+            onCountChanged: {
+                if (count === 0) {
+                    Q_EMIT: root.fileSelected("")
+                }
             }
 
             header: ToolBar {
