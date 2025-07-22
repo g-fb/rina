@@ -5,6 +5,7 @@
 
 #include <KIO/DeleteOrTrashJob>
 #include <KIO/OpenFileManagerWindowJob>
+#include <KIO/RenameFileDialog>
 
 using namespace Qt::StringLiterals;
 
@@ -90,4 +91,18 @@ void Bridge::moveToTrash(const QUrl &fileUrl)
                                           KIO::AskUserActionInterface::DefaultConfirmation,
                                           this);
     job->start();
+}
+
+void Bridge::rename(const QUrl &url)
+{
+    KFileItem item(url);
+    KIO::RenameFileDialog *renameDialog = new KIO::RenameFileDialog({item}, nullptr);
+    renameDialog->open();
+
+    connect(renameDialog, &KIO::RenameFileDialog::error, this, [](KJob *error) {
+        qDebug() << error->errorText();
+    });
+    connect(renameDialog, &KIO::RenameFileDialog::renamingFinished, this, [this, url](const QList<QUrl> &urls) {
+        Q_EMIT renameSucceeded(url, urls.constFirst());
+    });
 }

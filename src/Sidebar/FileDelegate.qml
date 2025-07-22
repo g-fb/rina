@@ -23,6 +23,15 @@ ItemDelegate {
                 Bridge.highlightInFileManager(root.fileUrl)
             }
         }
+
+        MenuItem {
+            text: i18nc("@action:inmenu", "Rename file")
+            icon.name: "edit-rename"
+            onClicked: {
+                Bridge.rename(root.fileUrl)
+            }
+        }
+
         MenuItem {
             text: i18nc("@action:inmenu", "Delete file")
             icon.name: "delete"

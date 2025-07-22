@@ -22,6 +22,10 @@ public Q_SLOTS:
     bool createFile(const QUrl &fileUrl);
     void highlightInFileManager(const QUrl &fileUrl);
     void moveToTrash(const QUrl &fileUrl);
+    void rename(const QUrl &url);
+
+Q_SIGNALS:
+    void renameSucceeded(const QUrl &oldUrl, const QUrl &newUrl);
 
 private:
     Q_DISABLE_COPY_MOVE(Bridge)

@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QtWebEngineQuick>
 
@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 {
     QtWebEngineQuick::initialize();
 
-    QGuiApplication app(argc, argv);
-    QGuiApplication::setWindowIcon(QIcon::fromTheme(u"rina"_s));
+    QApplication app(argc, argv);
+    QApplication::setWindowIcon(QIcon::fromTheme(u"rina"_s));
     KLocalizedString::setApplicationDomain("rina");
 
     QQmlApplicationEngine engine;

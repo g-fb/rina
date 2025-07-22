@@ -33,6 +33,14 @@ ItemDelegate {
         }
 
         MenuItem {
+            text: i18nc("@action:inmenu", "Rename folder")
+            icon.name: "edit-rename"
+            onClicked: {
+                Bridge.rename(root.folderUrl)
+            }
+        }
+
+        MenuItem {
             text: i18nc("@action:inmenu", "Delete folder")
             icon.name: "delete"
             onClicked: {
