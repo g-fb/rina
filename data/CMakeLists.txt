@@ -5,7 +5,7 @@
 #
 
 ecm_install_icons(
-    ICONS icons/sc-apps-rina.svg}
+    ICONS icons/sc-apps-rina.svg
     DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )

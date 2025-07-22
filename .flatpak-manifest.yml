@@ -7,8 +7,8 @@ sdk: org.kde.Sdk
 base: io.qt.qtwebengine.BaseApp
 base-version: 6.9
 command: apprina
-# rename-icon: rina
-# copy-icon: true
+rename-icon: rina
+copy-icon: true
 finish-args:
   - --share=ipc
   - --socket=wayland

@@ -100,4 +100,5 @@ ecm_setup_version(${PROJECT_VERSION}
 
 ki18n_install(po)
 
+add_subdirectory(data)
 add_subdirectory(src)
